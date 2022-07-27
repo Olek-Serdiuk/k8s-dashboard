@@ -7,3 +7,9 @@ bases:
 patchesStrategicMerge:
 - custom-env.yaml
 - replica-and-rollout-strategy.yaml
+
+images:
+- name: 
+  newName: kodekloud/simple-webapp
+  newTag: blue
+  # newTag: green

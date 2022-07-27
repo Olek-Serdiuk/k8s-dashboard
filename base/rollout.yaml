@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: sl-demo-app
+spec:
+  selector:
+    matchLabels:
+      app: sl-demo-app
+  template:
+    metadata:
+      labels:
+        app: sl-demo-app
+    spec:
+      containers:
+      - name: app
+        image: yeasy/simple-web
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+  strategy:
+    blueGreen:
+      activeService: superapi-svc-active
+      previewService: superapi-svc-preview
+      autoPromotionEnabled: false

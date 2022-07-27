@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sl-demo-app
+  name: superapi-svc-active
 spec:
   ports:
     - name: http

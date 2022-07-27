@@ -12,4 +12,4 @@ images:
 - name: yeasy/simple-web
   newName: serdyuk/blue-green
   # newTag: red
-  newTag: green
+  newTag: blue

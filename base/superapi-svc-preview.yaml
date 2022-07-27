@@ -8,4 +8,4 @@ spec:
       port: 8088
       targetPort: 80
   selector:
-    app: sl-demo-app
+    app: demo-app-bg

@@ -10,6 +10,6 @@ patchesStrategicMerge:
 
 images:
 - name: yeasy/simple-web
-  newName: kodekloud/simple-webapp
+  newName: serdyuk/blue-green
   newTag: blue
   # newTag: green

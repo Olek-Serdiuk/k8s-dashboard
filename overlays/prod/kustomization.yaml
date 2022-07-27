@@ -9,7 +9,7 @@ patchesStrategicMerge:
 - replica-and-rollout-strategy.yaml
 
 images:
-- name: http
+- name: yeasy/simple-web
   newName: kodekloud/simple-webapp
   newTag: blue
   # newTag: green

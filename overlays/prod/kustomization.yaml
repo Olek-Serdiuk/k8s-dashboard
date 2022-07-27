@@ -6,7 +6,7 @@ bases:
 
 patchesStrategicMerge:
 - custom-env.yaml
-- replica-and-rollout-strategy.yaml
+# - replica-and-rollout-strategy.yaml
 
 images:
 - name: yeasy/simple-web

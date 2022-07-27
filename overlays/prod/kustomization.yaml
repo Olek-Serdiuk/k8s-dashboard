@@ -11,5 +11,5 @@ patchesStrategicMerge:
 images:
 - name: yeasy/simple-web
   newName: serdyuk/blue-green
-  newTag: blue
+  newTag: red
   # newTag: green

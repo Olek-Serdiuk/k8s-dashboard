@@ -11,6 +11,6 @@ bases:
 images:
 - name: yeasy/simple-web
   newName: serdyuk/blue-green
-  # newTag: red
-  newTag: blue
+  newTag: red
+  # newTag: blue
   # newTag: failure

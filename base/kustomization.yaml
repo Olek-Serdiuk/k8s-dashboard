@@ -7,4 +7,4 @@ kind: Kustomization
 resources:
   - superapi-svc-active.yaml
   - deployment.yaml
-  # - ingress.yaml
+  - ingress.yaml

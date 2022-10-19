@@ -4,14 +4,16 @@ metadata:
   annotations:
     # load balancer priority, lower numbers are evaluated first
     # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-update-rules.html#update-rule-priority
-    alb.ingress.kubernetes.io/group.order: "10"
-    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30" # in seconds
-    alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/healty-threshold-count: "1"
+    alb.ingress.kubernetes.io/scheme: internal
+    # alb.ingress.kubernetes.io/group.order: "10"
+    # alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30" # in seconds
+    # alb.ingress.kubernetes.io/healthcheck-path: /
+    # alb.ingress.kubernetes.io/healty-threshold-count: "1"
     # by default, it will create a listener rule on port 80
     # you can specify both ports as well like this: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 80}]'
-    alb.ingress.kubernetes.io/unhealthy-threshold-count: "3"
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 80}]'
+    # alb.ingress.kubernetes.io/unhealthy-threshold-count: "3"
+    alb.ingress.kubernetes.io/target-type: ip
   name: demo-app-bg
 spec:
   # if you have the `ingressclass.kubernetes.io/is-default-class=true`
@@ -23,9 +25,9 @@ spec:
         paths:
           - backend:
               service:
-                name: demo-app-bg
+                name: superapi-svc-active
                 port:
-                  number: 8088
+                  number: 80
             path: /
             pathType: Prefix
   # the ALB will fetch the right certificate from ACM

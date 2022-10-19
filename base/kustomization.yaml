@@ -7,4 +7,4 @@ kind: Kustomization
 resources:
   - superapi-svc-active.yaml
   - superapi-svc-preview.yaml
-  - rollout.yaml
+  - deployment.yaml

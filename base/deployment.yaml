@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sl-demo-app
+  name: demo-app-bg
 spec:
   selector:
     matchLabels:
-      app: sl-demo-app
+      app: demo-app-bg
   template:
     metadata:
       labels:
-        app: sl-demo-app
+        app: demo-app-bg
     spec:
       containers:
       - name: app

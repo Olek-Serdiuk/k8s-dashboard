@@ -10,7 +10,7 @@ bases:
 
 images:
 - name: yeasy/simple-web
-  newName: nginx:latest
-  newTag: red
+  newName: nginx
+  newTag: latest
   # newTag: blue
   # newTag: failure

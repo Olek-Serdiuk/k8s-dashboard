@@ -1,17 +1,55 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: demo-app-bg
-  labels:
-    app: demo-app-bg
   annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
+    # load balancer priority, lower numbers are evaluated first
+    # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-update-rules.html#update-rule-priority
+    alb.ingress.kubernetes.io/group.order: "10"
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30" # in seconds
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healty-threshold-count: "1"
+    # by default, it will create a listener rule on port 80
+    # you can specify both ports as well like this: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 80}]'
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "3"
+  name: demo-app-bg
 spec:
+  # if you have the `ingressclass.kubernetes.io/is-default-class=true`
+  # annotation on the ingress class, you don't need this
+  # ingressClassName: aws-alb
   rules:
-    - http:
+    - host: nginx.data-lake-dev.arelion.io
+      http:
         paths:
-          - path: /*
-            backend:
-              serviceName: demo-app-bg
-              servicePort: 80
+          - backend:
+              service:
+                name: demo-app-bg
+                port:
+                  number: 8088
+            path: /
+            pathType: Prefix
+  # the ALB will fetch the right certificate from ACM
+  # you can also specify manually using `alb.ingress.kubernetes.io/certificate-arn` annotation on the Ingress
+  # https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/#certificate-arn
+  # tls:
+  #   - hosts:
+  #       - "*.example.com"
+  #     secretName: example-tls
+
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: demo-app-bg
+#   labels:
+#     app: demo-app-bg
+#   annotations:
+#     kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /*
+#             backend:
+#               serviceName: demo-app-bg
+#               servicePort: 8088

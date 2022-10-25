@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/subnets: subnet-0655d3bb5e6fe1d0a, subnet-0c24587c742adcd8d
     alb.ingress.kubernetes.io/scheme: internal
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-path: /
     external-dns.alpha.kubernetes.io/hostname: nginx.data-lake-dev.arelion.io
 
 

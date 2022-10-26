@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: alb
-    # alb.ingress.kubernetes.io/group.name: olek-eks-test
+    alb.ingress.kubernetes.io/group.name: olek-testing-dev
     alb.ingress.kubernetes.io/target-type: ip
     # alb.ingress.kubernetes.io/subnets: subnet-0655d3bb5e6fe1d0a, subnet-0c24587c742adcd8d
     alb.ingress.kubernetes.io/scheme: internal
